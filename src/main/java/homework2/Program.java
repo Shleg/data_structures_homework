@@ -28,25 +28,25 @@ public class Program {
         }
     }
 
-    private static void heapify(int[] arr, int n, int i) {
-        int largest = i;
-        int leftChildIdx = 2 * i + 1;
-        int rightChildIdx = 2 * i + 2;
+    private static void heapify(int[] array, int heapSize, int rootIndex) {
+        int largest = rootIndex;
+        int leftChildIdx = 2 * rootIndex + 1;
+        int rightChildIdx = 2 * rootIndex + 2;
 
-        if (leftChildIdx < n && arr[leftChildIdx] > arr[largest]) {
+        if (leftChildIdx < heapSize && array[leftChildIdx] > array[largest]) {
             largest = leftChildIdx;
         }
 
-        if (rightChildIdx < n && arr[rightChildIdx] > arr[largest]) {
+        if (rightChildIdx < heapSize && array[rightChildIdx] > array[largest]) {
             largest = rightChildIdx;
         }
 
-        if (largest != i) {
-            int temp = arr[i];
-            arr[i] = arr[largest];
-            arr[largest] = temp;
+        if (largest != rootIndex) {
+            int temp = array[rootIndex];
+            array[rootIndex] = array[largest];
+            array[largest] = temp;
 
-            heapify(arr, n, largest);
+            heapify(array, heapSize, largest);
         }
     }
 }
